@@ -1,0 +1,167 @@
+/* frontend/src/App.css - Responsive, mobile-first, accessible */
+:root{
+  --bg: #f6f8fa;
+  --card: #ffffff;
+  --muted: #666666;
+  --text: #111827;
+  --primary: #2563eb;
+  --danger: #ef4444;
+  --muted-border: #e6e9ef;
+  --radius: 10px;
+  --gap: 12px;
+  --container-max: 1200px;
+  --shadow: 0 6px 18px rgba(12,20,30,0.06);
+  --focus: 0 0 0 4px rgba(37,99,235,0.12);
+  font-size: 16px;
+}
+
+/* Reset / base */
+* { box-sizing: border-box; }
+html,body,#root { height:100%; }
+body {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin: 0; padding: 0;
+  background: var(--bg); color: var(--text);
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+}
+
+/* Layout container */
+.container {
+  max-width: var(--container-max);
+  margin: 20px auto;
+  padding: 16px;
+}
+
+/* Header */
+header { margin-bottom: 12px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+header h1 { margin:0; font-size:1.25rem; letter-spacing:-0.2px; }
+
+/* Controls (search + filter) */
+.controls {
+  display:flex;
+  gap:12px;
+  margin-bottom:16px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.controls > div { min-width: 180px; flex:1; max-width: 420px; display:flex; align-items:center; gap:8px; }
+.controls label { min-width:56px; font-weight:600; color:var(--muted); }
+
+/* Inputs */
+input, select, textarea {
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid var(--muted-border);
+  background: white;
+  color:var(--text);
+  width:100%;
+  outline: none;
+  transition: box-shadow .15s ease, border-color .12s ease;
+  font-size:0.95rem;
+}
+input:focus, textarea:focus, select:focus {
+  box-shadow: var(--focus);
+  border-color: var(--primary);
+}
+
+/* Main two-column layout */
+main {
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:20px;
+}
+
+/* Left (form) */
+.left { width:100%; max-width:420px; }
+
+/* Right (list) */
+.right { width:100%; }
+
+/* Card style */
+.card {
+  background: var(--card);
+  padding:14px;
+  border-radius:var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom:14px;
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+/* Card image */
+.card img {
+  width:110px;
+  height:82px;
+  object-fit:cover;
+  border-radius:8px;
+  flex-shrink:0;
+  background:#f0f2f5;
+}
+
+/* Card meta */
+.card .meta { flex:1; }
+.card h3 { margin:0 0 6px 0; font-size:1rem; }
+.card p { margin:4px 0; color:#4b5563; font-size:0.92rem; }
+
+/* Actions inside card */
+.card .actions {
+  margin-top:8px; display:flex; gap:8px; flex-wrap:wrap;
+}
+button {
+  padding:8px 10px; border-radius:8px; border:0; cursor:pointer; font-weight:600;
+  font-size:0.94rem;
+}
+.btn-primary { background:var(--primary); color:white; box-shadow:0 4px 10px rgba(37,99,235,0.12); }
+.btn-primary:hover { transform:translateY(-1px) }
+.btn-secondary { background:#f3f4f6; color:var(--text); }
+.btn-danger { background:var(--danger); color:white; }
+
+/* Form fields */
+form .field { margin-bottom:12px; }
+form label { display:block; margin-bottom:6px; font-weight:600; color:var(--muted); font-size:0.9rem; }
+textarea { min-height:96px; resize:vertical; }
+
+/* Footer */
+footer { margin-top:18px; text-align:center; color:var(--muted); font-size:13px; }
+
+/* Modal */
+.modal-backdrop { position:fixed; inset:0; background:rgba(0,0,0,0.45); display:flex; align-items:center; justify-content:center; z-index:40; padding:20px; }
+.modal { width:100%; max-width:920px; background:white; border-radius:12px; padding:18px; box-shadow:var(--shadow); }
+.modal img { width:100%; height:360px; object-fit:cover; border-radius:8px; margin-bottom:12px; }
+
+/* Utility */
+.center { text-align:center; }
+.small { font-size:0.85rem; color:var(--muted); }
+
+/* Responsive: tablet and up */
+@media (min-width: 780px) {
+  main {
+    grid-template-columns: 360px 1fr;
+    align-items:start;
+  }
+  .card img { width:140px; height:100px; }
+}
+
+/* Responsive: desktop wide */
+@media (min-width: 1100px) {
+  .container { max-width: var(--container-max); padding:20px; }
+  .card { padding:16px; gap:16px; }
+  .modal { padding:24px; }
+}
+
+/* Accessibility focus for keyboard users */
+button:focus, a:focus, input:focus, select:focus, textarea:focus {
+  outline: none;
+  box-shadow: var(--focus);
+}
+
+/* Tiny devices */
+@media (max-width: 420px) {
+  header h1 { font-size:1.05rem; }
+  .card img { width:100px; height:76px; }
+  .modal img { height:220px; }
+}
+
+
